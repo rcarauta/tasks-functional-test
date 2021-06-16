@@ -16,7 +16,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class TasksTest {
 	
 	public WebDriver acessarAplicacao() {
-		System.setProperty("webdriver.chrome.driver", "/home/renato/Downloads/desenvolvimento/cursos/jenkins/chromedriver_linux64/chromedriver");
+		//System.setProperty("webdriver.chrome.driver", "/home/renato/Downloads/desenvolvimento/cursos/jenkins/chromedriver_linux64/chromedriver");
 		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
 		driver.navigate().to("http://localhost:8001/tasks");
