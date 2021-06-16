@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -16,9 +17,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class TasksTest {
 	
 	public WebDriver acessarAplicacao() {
-		//System.setProperty("webdriver.chrome.driver", "/home/renato/Downloads/desenvolvimento/cursos/jenkins/chromedriver_linux64/chromedriver");
+		System.setProperty("webdriver.gecko.driver", "/home/renato/Downloads/desenvolvimento/cursos/jenkins/geckodriver-v0.29.1-linux64/geckodriver");
 		WebDriverManager.chromedriver().setup();
-		WebDriver driver = new ChromeDriver();
+		WebDriver driver = new FirefoxDriver();
 		driver.navigate().to("http://localhost:8001/tasks");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		return driver;
