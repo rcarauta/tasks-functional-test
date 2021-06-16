@@ -10,19 +10,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 
 public class TasksTest {
 	
 	public WebDriver acessarAplicacao() {
 		System.setProperty("webdriver.chrome.driver", "/home/renato/Downloads/desenvolvimento/cursos/jenkins/chromedriver_linux64/chromedriver");
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("start-maximized"); // open Browser in maximized mode
-		options.addArguments("disable-infobars"); // disabling infobars
-		options.addArguments("--disable-extensions"); // disabling extensions
-		options.addArguments("--disable-gpu"); // applicable to windows os only
-		options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
-		options.addArguments("--no-sandbox");
-		WebDriver driver = new ChromeDriver(options);
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
 		driver.navigate().to("http://localhost:8001/tasks");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		return driver;
