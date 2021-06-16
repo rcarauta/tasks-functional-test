@@ -22,7 +22,7 @@ public class TasksTest {
 		options.addArguments("--disable-gpu"); // applicable to windows os only
 		options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
 		options.addArguments("--no-sandbox");
-		WebDriver driver = new ChromeDriver();
+		WebDriver driver = new ChromeDriver(options);
 		driver.navigate().to("http://localhost:8001/tasks");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		return driver;
