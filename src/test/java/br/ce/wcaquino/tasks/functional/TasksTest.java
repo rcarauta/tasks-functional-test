@@ -8,22 +8,26 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 
 public class TasksTest {
 	
 	public WebDriver acessarAplicacao() {
+		System.setProperty("webdriver.chrome.driver", "/home/renato/Downloads/desenvolvimento/cursos/jenkins/chromedriver_linux64/chromedriver");
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("start-maximized"); // open Browser in maximized mode
+		options.addArguments("disable-infobars"); // disabling infobars
+		options.addArguments("--disable-extensions"); // disabling extensions
+		options.addArguments("--disable-gpu"); // applicable to windows os only
+		options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
+		options.addArguments("--no-sandbox");
 		WebDriver driver = new ChromeDriver();
 		driver.navigate().to("http://localhost:8001/tasks");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		return driver;
 	}
-	
-	@BeforeClass
-	public static void setup() {
-		System.setProperty("webdriver.chrome.driver", "/home/renato/Downloads/desenvolvimento/cursos/jenkins/chromedriver_linux64/chromedriver");
-	}
-	
+
 	@Test
 	public void deveSalvarTarefaComSucesso() {
 		WebDriver driver = acessarAplicacao();
